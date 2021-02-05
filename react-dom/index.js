@@ -1,12 +1,12 @@
 import Component from '../react/component'
-
+import {diff} from "./diff"
 const ReactDOM={
     render
 }
 
-function render(vnode,container){
-    console.log(8,vnode,container)
-    container.appendChild(_render(vnode))
+function render(vnode,container,dom){
+  return diff(dom,vnode,container);
+//   container.appendChild(_render(vnode))
 }
 
 function createComponent(comp,props){
@@ -81,9 +81,9 @@ function _render(vnode){
     if(typeof tag==='function'){
         //创建组件
         const comp=createComponent(tag,attrs);
-        // //设置属性
+        //设置属性
         setComponentProps(comp,attrs);
-        // //组件渲染的节点对象返回
+        //组件渲染的节点对象返回
         return comp.base
     }
     //创建元素节点
@@ -106,7 +106,7 @@ function _render(vnode){
 }
 
 //设置属性
-function setAttribute(dom,key,value){ 
+export function setAttribute(dom,key,value){ 
     //将属性名转换
     if(key==='className'){
         key='class' 
