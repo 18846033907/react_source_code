@@ -1,0 +1,15 @@
+{
+  "scripts": {
+    "dev": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.13",
+    "@babel/core": "^7.12.13",
+    "@babel/preset-react": "^7.12.13",
+    "parcel-bundler": "^1.12.4"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1"
+  }
+}
