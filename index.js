@@ -1,11 +1,11 @@
 import React from './react'
 import ReactDOM from './react-dom'
 
-const ele=(
-    <div className='active' title='hahh' style={{width:100,backgroundColor:'red'}} onClick={()=>{console.log('click')}}>
-            hello,<span>你猜</span>
-    </div>
-)
+// const ele=(
+//     <div className='active' title='hahh' style={{width:100,backgroundColor:'red'}} onClick={()=>{console.log('click')}}>
+//             hello,<span>你猜</span>
+//     </div>
+// )
 
 // function Home(){
 //     return (
@@ -60,7 +60,7 @@ class Home extends React.Component{
 const title='active'
 
 // ReactDOM.render('React',document.querySelector('#root'))
-ReactDOM.render(ele,document.querySelector('#root'))
+ReactDOM.render(<Home  name={title} />,document.querySelector('#root'))
 // ReactDOM.render(<Home name={title}/>,document.querySelector('#root'))
 
 // createElement(tag,attrs,child1,child2...)

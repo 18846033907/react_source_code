@@ -1,5 +1,5 @@
 import Component from '../react/component'
-import {diff} from "./diff"
+import {diff,diffNode} from "./diff"
 const ReactDOM={
     render
 }
@@ -9,7 +9,7 @@ function render(vnode,container,dom){
 //   container.appendChild(_render(vnode))
 }
 
-function createComponent(comp,props){
+export function createComponent(comp,props){
     let inst;
     if(comp.prototype&&comp.prototype.render){
         //类组件,创建实例
@@ -29,15 +29,15 @@ function createComponent(comp,props){
 
 //渲染组件
 export function renderComponent(comp){
-    if(comp.base){
-        console.log(48,comp)
-    }
     let base;
     const renderer=comp.render();
     base=_render(renderer);
     if(comp.base && comp.componentWillUpdate){
         comp.componentWillUpdate()
     }
+
+    base = diffNode(comp.base,renderer);
+    comp.base = base;
 
     if(comp.base){
         if(comp.componentDidUpdate) comp.componentDidUpdate()
@@ -53,7 +53,7 @@ export function renderComponent(comp){
     comp.base=base;
 }
 
-function setComponentProps(comp,props){
+export function setComponentProps(comp,props){
     if(!comp.base){
         if(comp.componentWillMount) comp.componentWillMount()
     }else{
